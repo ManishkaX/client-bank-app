@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/styles.css}" />
+    <title>Create client</title>
+</head>
+<body>
+<h1>Форма создания клиента</h1>
+
+<form th:action="@{/clients/}" th:object="${client}" method="post">
+    <div class="field">
+        <label for="surname">Фамилия</label>
+        <input type="text" name="surname" id="surname" required />
+    </div>
+
+    <div class="field">
+        <label for="name">Имя</label>
+        <input type="text" name="name" id="name" required />
+    </div>
+
+    <div class="field">
+        <label for="patronymic">Отчество</label>
+        <input type="text" name="patronymic" id="patronymic" required />
+    </div>
+
+    <div class="field">
+        <label for="birthdate">Дата рождения</label>
+        <input type="date" name="birthdate" id="birthdate" required />
+    </div>
+
+    <div class="field">
+        <label>Пол</label>
+        <div>
+            <label for="male">Мужской</label>
+            <input type="radio" name="sex" id="male" />
+
+            <label for="female">Женский</label>
+            <input type="radio" name="sex" id="female" />
+        </div>
+    </div>
+
+    <div class="field">
+        <label for="passportSeries">Серия паспорта</label>
+        <input type="text" name="passportSeries" id="passportSeries" required />
+    </div>
+
+    <div class="field">
+        <label for="passportNumber">Номер паспорта</label>
+        <input type="text" name="passportNumber" id="passportNumber" required />
+    </div>
+
+    <div class="field">
+        <label for="authority">Кем выдан</label>
+        <input type="text" name="authority" id="authority" required />
+    </div>
+
+    <div class="field">
+        <label for="issueDate">Дата выдачи</label>
+        <input type="text" name="issueDate" id="issueDate" required />
+    </div>
+
+    <div class="field">
+        <label for="identificationNumber">Идентификационный номер</label>
+        <input type="text" name="identificationNumber" id="identificationNumber" required />
+    </div>
+
+    <div class="field">
+        <label for="birthPlace">Место рождения</label>
+        <input type="text" name="birthPlace" id="birthPlace" required />
+    </div>
+
+    <div class="field">
+        <label for="actualResidenceCity">Город фактического проживания</label>
+        <select name="actualResidenceCity" id="actualResidenceCity">
+            <option th:each="city: ${cities}"
+                    th:value="${city.getName()}"
+                    th:text="${city.getName()}">
+                Выберите город
+            </option>
+        </select>
+    </div>
+
+    <div class="field">
+        <label for="actualResidenceAddress">Адрес фактического проживания</label>
+        <input type="text" name="actualResidenceAddress" id="actualResidenceAddress" required />
+    </div>
+
+    <div class="field">
+        <label for="homePhoneNumber">Домашний номер телефона</label>
+        <input type="text" name="homePhoneNumber" id="homePhoneNumber" />
+    </div>
+
+    <div class="field">
+        <label for="cellPhoneNumber">Мобильный номер телефона</label>
+        <input type="text" name="cellPhoneNumber" id="cellPhoneNumber" />
+    </div>
+
+    <div class="field">
+        <label for="email">Email</label>
+        <input type="email" name="email" id="email" required />
+    </div>
+
+    <div class="field">
+        <label for="residenceCity">Город проживания</label>
+        <select name="residenceCity" id="residenceCity" >
+            <option th:each="city: ${cities}"
+                    th:value="${city.getName()}"
+                    th:text="${city.getName()}">
+                Выберите город
+            </option>
+        </select>
+    </div>
+
+    <div class="field">
+        <label for="maritalStatus">Семейное положение</label>
+        <select name="maritalStatus" id="maritalStatus">
+            <option th:each="maritalStatus: ${maritalStatuses}"
+                    th:value="${maritalStatus.getName()}"
+                    th:text="${maritalStatus.getName()}">
+                Выберите город
+            </option>
+        </select>
+    </div>
+
+    <div class="field">
+        <label for="nationality">Национальность</label>
+        <select name="nationality" id="nationality">
+            <option th:each="nationality: ${nationalities}"
+                    th:value="${nationality.getName()}"
+                    th:text="${nationality.getName()}">
+                Выберите город
+            </option>
+        </select>
+    </div>
+
+    <div class="field">
+        <label for="disability">Инвалидность</label>
+        <select name="disability" id="disability">
+            <option th:each="disability: ${disabilities}"
+                    th:value="${disability.getName()}"
+                    th:text="${disability.getName()}">
+                Выберите город
+            </option>
+        </select>
+    </div>
+
+    <div class="field">
+        <label for="retiree">Пенсионер</label>
+        <input type="checkbox" name="retiree" id="retiree" />
+    </div>
+
+    <div class="field">
+        <label for="monthlyRevenue">Ежемесячный доход</label>
+        <input type="number" name="monthlyRevenue" id="monthlyRevenue" />
+    </div>
+
+
+    <input type="submit" class="form_button" value="Создать" />
+</form>
+
+<a href="http://localhost:8080/clients/">Список клиентов</a>
+
+</body>
+</html>

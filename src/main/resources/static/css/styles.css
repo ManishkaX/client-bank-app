@@ -1,0 +1,30 @@
+body {
+    /*position: relative;*/
+    /*left: 37%;*/
+}
+
+.field {
+    display: flex;
+    justify-content: space-between;
+
+    margin: 10px 0;
+}
+
+form {
+    width: 450px;
+    margin-bottom: 20px;
+}
+
+.form_button {
+    width: 50%;
+    height: 30px;
+    border: 0;
+    border-radius: 7px;
+
+   margin-left: 25%;
+    /*background-color: #1b75d0;*/
+}
+
+.form_button:hover {
+    /*background-color: #155ca2;*/
+}
