@@ -6,12 +6,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.Formatter;
 import org.springframework.stereotype.Component;
 
-import java.text.ParseException;
 import java.util.Locale;
 
 @Component
 public class MaritalStatusFormatter implements Formatter<MaritalStatus> {
-    private MaritalStatusService maritalStatusService;
+    private final MaritalStatusService maritalStatusService;
 
     @Autowired
     public MaritalStatusFormatter(MaritalStatusService maritalStatusService) {
@@ -19,7 +18,7 @@ public class MaritalStatusFormatter implements Formatter<MaritalStatus> {
     }
 
     @Override
-    public MaritalStatus parse(String text, Locale locale) throws ParseException {
+    public MaritalStatus parse(String text, Locale locale) {
         return maritalStatusService.getMaritalStatusByName(text).orElse(null);
     }
 

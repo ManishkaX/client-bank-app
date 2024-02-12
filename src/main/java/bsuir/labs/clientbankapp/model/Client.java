@@ -3,6 +3,8 @@ package bsuir.labs.clientbankapp.model;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotNull;
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.util.Date;
 
 @Entity
@@ -20,6 +22,7 @@ public class Client {
     private String patronymic;
 
     @NotNull
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date birthdate;
     @NotNull
     @OneToOne
@@ -32,6 +35,7 @@ public class Client {
     @NotNull
     private String authority;
     @NotNull
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date issueDate;
     @NotNull
     private String identificationNumber;

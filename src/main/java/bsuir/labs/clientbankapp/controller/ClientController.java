@@ -47,7 +47,6 @@ public class ClientController {
 
     @GetMapping("/new")
     public String getCreateClientForm(Model model) {
-
         model.addAttribute("client", new Client());
         model.addAttribute("cities", cityService.getAll());
         model.addAttribute("disabilities", disabilityService.getAll());

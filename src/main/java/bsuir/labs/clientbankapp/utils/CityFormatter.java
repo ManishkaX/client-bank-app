@@ -6,13 +6,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.Formatter;
 import org.springframework.stereotype.Component;
 
-import java.text.ParseException;
 import java.util.Locale;
 
 @Component
 public class CityFormatter implements Formatter<City> {
 
-    private CityService cityService;
+    private final CityService cityService;
 
     @Autowired
     public CityFormatter(CityService cityService) {
@@ -20,7 +19,7 @@ public class CityFormatter implements Formatter<City> {
     }
 
     @Override
-    public City parse(String text, Locale locale) throws ParseException {
+    public City parse(String text, Locale locale) {
         return cityService.getCityByName(text).orElse(null);
     }
 

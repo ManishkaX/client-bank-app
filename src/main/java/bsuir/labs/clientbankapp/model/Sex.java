@@ -13,6 +13,12 @@ public class Sex {
     @Column(unique = true)
     private String name;
 
+    public Sex(String name) {
+        this.name = name;
+    }
+
+    public Sex() {}
+
     public int getId() {
         return id;
     }
