@@ -9,5 +9,5 @@ spring:
     url: jdbc:postgresql://localhost:5432/client_db
 
   jpa:
-    show-sql: true
+    show-sql: false
     hibernate.ddl-auto: update

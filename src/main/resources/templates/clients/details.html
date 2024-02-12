@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/styles.css}" />
+    <title th:text="${client.getSurname() + ' ' + client.getName()}"></title>
+</head>
+<body>
+<h1>Client detaild</h1>
+  <div class="about">
+    <div class="field">
+      <label>Фамилия</label>
+      <p th:text="${client.getSurname()}"></p>
+    </div>
+
+    <div class="field">
+      <label>Имя</label>
+      <p th:text="${client.getName()}"></p>
+    </div>
+
+    <div class="field">
+      <label>Отчество</label>
+      <p th:text="${client.getSurname()}"></p>
+    </div>
+
+    <div class="field">
+      <label>Дата рождения</label>
+      <p th:text="${#dates.format(client.getBirthdate(), 'dd MMM yyyy')}"></p>
+    </div>
+
+    <div class="field">
+      <label>Пол</label>
+      <p th:text="${client.getSex().getName()}"></p>
+    </div>
+
+    <div class="field">
+      <label>Серия паспорта</label>
+      <p th:text="${client.getPassportSeries()}"></p>
+    </div>
+
+    <div class="field">
+      <label>Номер паспорта</label>
+      <p th:text="${client.getPassportNumber()}"></p>
+    </div>
+
+    <div class="field">
+      <label>Кем выдан</label>
+      <p th:text="${client.getAuthority()}"></p>
+    </div>
+
+    <div class="field">
+      <label>Дата выдачи</label>
+      <p th:text="${#dates.format(client.getIssueDate(), 'dd MMM yyyy')}"></p>
+    </div>
+
+    <div class="field">
+      <label>Идентификационный номер</label>
+      <p th:text="${client.getIdentificationNumber()}"></p>
+    </div>
+
+    <div class="field">
+      <label>Идентификационный номер</label>
+      <p th:text="${client.getIdentificationNumber()}"></p>
+    </div>
+
+    <div class="field">
+      <label>Место рождения</label>
+      <p th:text="${client.getBirthPlace()}"></p>
+    </div>
+
+    <div class="field">
+      <label>Город фактического проживания</label>
+      <p th:text="${client.getActualResidenceCity().getName()}"></p>
+    </div>
+
+    <div class="field">
+      <label>Адрес фактического проживания</label>
+      <p th:text="${client.getActualResidenceCity().getName()}"></p>
+    </div>
+
+    <div class="field">
+      <label>Домашний номер телефона</label>
+      <p th:text="${client.getHomePhoneNumber()}"></p>
+    </div>
+
+    <div class="field">
+      <label>Мобильный номер телефона</label>
+      <p th:text="${client.getCellPhoneNumber()}"></p>
+    </div>
+
+    <div class="field">
+      <label>Email</label>
+      <p th:text="${client.getEmail()}"></p>
+    </div>
+
+    <div class="field">
+      <label>Город проживания</label>
+      <p th:text="${client.getResidenceCity().getName()}"></p>
+    </div>
+
+    <div class="field">
+      <label>Семейное положение</label>
+      <p th:text="${client.getMaritalStatus().getName()}"></p>
+    </div>
+
+    <div class="field">
+      <label>Национальность</label>
+      <p th:text="${client.getNationality().getName()}"></p>
+    </div>
+
+    <div class="field">
+      <label>Инвалидность</label>
+      <p th:text="${client.getDisability().getName()}"></p>
+    </div>
+
+    <div class="field">
+      <label>Пенсионер</label>
+      <p th:text="${client.isRetiree() ? 'Да' : 'Нет'}"></p>
+    </div>
+
+    <div class="field">
+      <label>Ежемесячный доход</label>
+      <p th:text="${client.getMonthlyRevenue()}"></p>
+    </div>
+
+    <form th:action="@{/clients/{id}/edit (id = ${client.getId()})} " th:method="GET">
+      <input type="submit" value="Редактировать">
+    </form>
+
+    <form th:action="@{/clients/{id} (id = ${client.getId()})}" th:method="DELETE" >
+      <input type="submit" value="Удалить">
+    </form>
+
+  </div>
+
+</body>
+</html>

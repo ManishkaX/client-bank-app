@@ -11,7 +11,7 @@ import java.util.Date;
 public class Client {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private int id;
 
     @NotNull
@@ -47,8 +47,8 @@ public class Client {
     @NotNull
     private String actualResidenceAddress;
 
-    private int homePhoneNumber;
-    private int cellPhoneNumber;
+    private String homePhoneNumber;
+    private String cellPhoneNumber;
 
     @Email
     private String email;
@@ -186,19 +186,19 @@ public class Client {
         this.actualResidenceAddress = actualResidenceAddress;
     }
 
-    public int getHomePhoneNumber() {
+    public String getHomePhoneNumber() {
         return homePhoneNumber;
     }
 
-    public void setHomePhoneNumber(int homePhoneNumber) {
+    public void setHomePhoneNumber(String homePhoneNumber) {
         this.homePhoneNumber = homePhoneNumber;
     }
 
-    public int getCellPhoneNumber() {
+    public String getCellPhoneNumber() {
         return cellPhoneNumber;
     }
 
-    public void setCellPhoneNumber(int cellPhoneNumber) {
+    public void setCellPhoneNumber(String cellPhoneNumber) {
         this.cellPhoneNumber = cellPhoneNumber;
     }
 

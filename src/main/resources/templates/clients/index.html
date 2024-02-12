@@ -1,11 +1,19 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>List of Clients</title>
+    <title>Список клиентов</title>
 </head>
 <body>
-    List of Clients
+    Список клиентов
+    <ul>
+        <a th:each="client: ${clients}"
+           th:href="@{/clients/{id}(id = ${client.getId()})}">
+            <li  th:text="${client.getSurname() + ' ' + client.getName() + ', '
+            + #dates.format(client.getBirthdate(), 'dd MMM yyyy')} ">
+            ></li>
+        </a>
+    </ul>
 
     <a href="http://localhost:8080/clients/new">Создать клиента</a>
 </body>

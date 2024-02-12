@@ -6,7 +6,7 @@ import jakarta.validation.constraints.NotNull;
 @Entity
 public class Disability {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private int id;
 
     @NotNull

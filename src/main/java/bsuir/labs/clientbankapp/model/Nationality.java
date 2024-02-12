@@ -6,11 +6,10 @@ import jakarta.validation.constraints.NotNull;
 @Entity
 public class Nationality {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private int id;
 
     @NotNull
-    @Column(unique = true)
     private String name;
 
     public Nationality(String name) {

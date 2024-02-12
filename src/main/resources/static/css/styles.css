@@ -28,3 +28,8 @@ form {
 .form_button:hover {
     /*background-color: #155ca2;*/
 }
+
+.about {
+    width: 400px;
+    margin-bottom: 10px;
+}
