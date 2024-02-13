@@ -6,22 +6,38 @@
     <title>Update Client Form</title>
 </head>
 <body>
-<form th:action="@{/clients/}" th:object="${client}" th:method="PUT">
+<form th:action="@{/clients/{id} (id = ${client.getId()})}" th:object="${client}" th:method="PUT">
     <div class="about">
         <div class="field">
             <label for="surname">Фамилия</label>
             <input type="text" name="surname" id="surname" th:value="*{getSurname()}" required />
         </div>
+        <ul>
+            <li th:each="err : ${#fields.errors('surname')}"
+                th:text="${err}" class="error" />
+        </ul>
+<!--        <p th:if="${#fields.hasErrors('surname')}"-->
+<!--           th:errorclass="error" th:errors="*{getSurname()}"-->
+<!--           th:value="${#fields.errors('surname')}">-->
+<!--        </p>-->
 
         <div class="field">
             <label for="name">Имя</label>
             <input type="text" name="name" id="name" th:value="*{getName()}" required />
         </div>
+        <ul>
+            <li th:each="err : ${#fields.errors('name')}"
+                th:text="${err}" class="error" />
+        </ul>
 
         <div class="field">
             <label for="patronymic">Отчество</label>
             <input type="text" name="patronymic" id="patronymic" th:value="*{getPatronymic()}" required />
         </div>
+        <ul>
+            <li th:each="err : ${#fields.errors('patronymic')}"
+                th:text="${err}" class="error" />
+        </ul>
 
         <div class="field">
             <label for="birthdate">Дата рождения</label>

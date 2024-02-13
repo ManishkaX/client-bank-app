@@ -31,4 +31,9 @@ public class ClientService {
         return clientRepository.findById(id);
     }
 
+    public void updateClient(Client client, int id) {
+        client.setId(id);
+        clientRepository.save(client);
+    }
+
 }

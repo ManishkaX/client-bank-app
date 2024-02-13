@@ -1,14 +1,16 @@
 package bsuir.labs.clientbankapp.controller;
 
-import bsuir.labs.clientbankapp.model.City;
-import bsuir.labs.clientbankapp.model.Client;
+import bsuir.labs.clientbankapp.model.*;
 import bsuir.labs.clientbankapp.service.*;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 
 @Controller
@@ -51,20 +53,20 @@ public class ClientController {
         return "redirect:/clients/";
     }
 
-    @PutMapping("/")
-    public String updateClient(@ModelAttribute("client") Client client, final BindingResult bindingResult) {
-        // Обновление данных
+    @PutMapping("/{id}")
+    public String updateClient(@Valid @ModelAttribute("client") Client client, @PathVariable("id") int id, final BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
+            System.out.println(bindingResult.getAllErrors());
+            return "clients/updateForm";
+        }
 
+        clientService.updateClient(client, id);
         return "redirect:/clients/";
     }
 
     @GetMapping("/new")
     public String getCreateClientForm(Model model) {
         model.addAttribute("client", new Client());
-        model.addAttribute("cities", cityService.getAll());
-        model.addAttribute("disabilities", disabilityService.getAll());
-        model.addAttribute("nationalities", nationalityService.getAll());
-        model.addAttribute("maritalStatuses", maritalStatusService.getAll());
 
         return "clients/createForm";
     }
@@ -77,12 +79,6 @@ public class ClientController {
         }
 
         model.addAttribute("client", client.get());
-        model.addAttribute("cities", cityService.getAll());
-        model.addAttribute("disabilities", disabilityService.getAll());
-        model.addAttribute("nationalities", nationalityService.getAll());
-        model.addAttribute("maritalStatuses", maritalStatusService.getAll());
-
-
         return "clients/updateForm";
     }
 
@@ -96,5 +92,25 @@ public class ClientController {
         model.addAttribute("client", client.get());
 
         return "clients/details";
+    }
+
+    @ModelAttribute("cities")
+    public List<City> getCities() {
+        return cityService.getAll();
+    }
+
+    @ModelAttribute("disabilities")
+    public List<Disability> getDisabilities() {
+        return disabilityService.getAll();
+    }
+
+    @ModelAttribute("nationalities")
+    public List<Nationality> getNationalities() {
+        return nationalityService.getAll();
+    }
+
+    @ModelAttribute("maritalStatuses")
+    public List<MaritalStatus> getMaritalStatuses() {
+        return maritalStatusService.getAll();
     }
 }

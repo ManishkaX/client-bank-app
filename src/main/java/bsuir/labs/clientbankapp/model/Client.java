@@ -1,8 +1,7 @@
 package bsuir.labs.clientbankapp.model;
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.Email;
-import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.*;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.Date;
@@ -14,37 +13,40 @@ public class Client {
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private int id;
 
-    @NotNull
+    @NotEmpty(message = "Поле является обязательным")
+    @Pattern(regexp = "[а-яА-ЯёЁ]+", message = "Поле не может содержать спец символы или цифры")
     private String surname;
-    @NotNull
+    @NotEmpty(message = "Поле является обязательным")
+    @Pattern(regexp = "[а-яА-ЯёЁ]+", message = "Поле не может содержать спец символы или цифры")
     private String name;
-    @NotNull
+    @NotEmpty(message = "Поле является обязательным")
+    @Pattern(regexp = "[а-яА-ЯёЁ]+", message = "Поле не может содержать спец символы или цифры")
     private String patronymic;
 
-    @NotNull
+    @NotNull(message = "Поле является обязательным")
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date birthdate;
-    @NotNull
+    @NotNull(message = "Поле является обязательным")
     @OneToOne
     private Sex sex;
 
-    @NotNull
+    @NotEmpty(message = "Поле является обязательным")
     private String passportSeries;
-    @NotNull
+    @NotEmpty(message = "Поле является обязательным")
     private String passportNumber;
-    @NotNull
+    @NotEmpty(message = "Поле является обязательным")
     private String authority;
-    @NotNull
+    @NotNull(message = "Поле является обязательным")
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date issueDate;
-    @NotNull
+    @NotEmpty(message = "Поле является обязательным")
     private String identificationNumber;
-    @NotNull
+    @NotEmpty(message = "Поле является обязательным")
     private String birthPlace;
-    @NotNull
+    @NotNull(message = "Поле является обязательным")
     @OneToOne
     private City actualResidenceCity;
-    @NotNull
+    @NotEmpty(message = "Поле является обязательным")
     private String actualResidenceAddress;
 
     private String homePhoneNumber;
@@ -53,22 +55,22 @@ public class Client {
     @Email
     private String email;
 
-    @NotNull
+    @NotNull(message = "Поле является обязательным")
     @OneToOne
     private City residenceCity;
 
     @OneToOne
     private MaritalStatus maritalStatus;
 
-    @NotNull
+    @NotNull(message = "Поле является обязательным")
     @OneToOne
     private Nationality nationality;
 
-    @NotNull
+    @NotNull(message = "Поле является обязательным")
     @OneToOne
     private Disability disability;
 
-    @NotNull
+    @NotNull(message = "Поле является обязательным")
     private boolean retiree;
 
     private double monthlyRevenue;
