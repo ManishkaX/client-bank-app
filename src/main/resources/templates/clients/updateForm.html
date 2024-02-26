@@ -77,7 +77,7 @@
 
         <div class="field">
             <label for="issueDate">Дата выдачи</label>
-            <input type="text" name="issueDate" id="issueDate" th:value="${#dates.format(client.getIssueDate(), 'yyyy-MM-dd')}" required />
+            <input type="text" name="issueDate" id="issueDate" placeholder="yyyy-MM-dd" th:value="${#dates.format(client.getIssueDate(), 'yyyy-MM-dd')}" required />
         </div>
 
         <div class="field">
@@ -109,17 +109,17 @@
 
         <div class="field">
             <label for="homePhoneNumber">Домашний номер телефона</label>
-            <input type="text" name="homePhoneNumber" id="homePhoneNumber" th:value="*{getHomePhoneNumber()}" />
+            <input type="number" name="homePhoneNumber" id="homePhoneNumber" placeholder="80 (XX) XXX-XX-XX" th:value="*{getHomePhoneNumber()}" />
         </div>
 
         <div class="field">
             <label for="cellPhoneNumber">Мобильный номер телефона</label>
-            <input type="text" name="cellPhoneNumber" id="cellPhoneNumber" th:value="*{getCellPhoneNumber()}" />
+            <input type="number" name="cellPhoneNumber" id="cellPhoneNumber" placeholder="80 (XX) XXX-XX-XX" th:value="*{getCellPhoneNumber()}" />
         </div>
 
         <div class="field">
             <label for="email">Email</label>
-            <input type="email" name="email" id="email" th:value="*{getEmail()}" required />
+            <input type="email" name="email" id="email" th:value="*{getEmail()}"/>
         </div>
 
         <div class="field">

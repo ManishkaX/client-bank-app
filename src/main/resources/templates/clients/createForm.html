@@ -13,16 +13,28 @@
         <label for="surname">Фамилия</label>
         <input type="text" name="surname" id="surname" required />
     </div>
+    <ul>
+        <li th:each="err : ${#fields.errors('surname')}"
+            th:text="${err}" class="error" />
+    </ul>
 
     <div class="field">
         <label for="name">Имя</label>
         <input type="text" name="name" id="name" required />
     </div>
+    <ul>
+        <li th:each="err : ${#fields.errors('name')}"
+            th:text="${err}" class="error" />
+    </ul>
 
     <div class="field">
         <label for="patronymic">Отчество</label>
         <input type="text" name="patronymic" id="patronymic" required />
     </div>
+    <ul>
+        <li th:each="err : ${#fields.errors('patronymic')}"
+            th:text="${err}" class="error" />
+    </ul>
 
     <div class="field">
         <label for="birthdate">Дата рождения</label>
@@ -33,7 +45,7 @@
         <label>Пол</label>
         <div>
             <label for="male">Мужской</label>
-            <input type="radio" name="sex" id="male" th:value="Мужской" />
+            <input type="radio" name="sex" id="male" th:value="Мужской" checked />
 
             <label for="female">Женский</label>
             <input type="radio" name="sex" id="female" th:value="Женский" />
@@ -57,7 +69,7 @@
 
     <div class="field">
         <label for="issueDate">Дата выдачи</label>
-        <input type="text" name="issueDate" id="issueDate" required />
+        <input type="date" name="issueDate" id="issueDate" required />
     </div>
 
     <div class="field">
@@ -88,17 +100,17 @@
 
     <div class="field">
         <label for="homePhoneNumber">Домашний номер телефона</label>
-        <input type="text" name="homePhoneNumber" id="homePhoneNumber" />
+        <input type="number" name="homePhoneNumber" id="homePhoneNumber" placeholder="80 (XX) XXX-XX-XX"/>
     </div>
 
     <div class="field">
         <label for="cellPhoneNumber">Мобильный номер телефона</label>
-        <input type="text" name="cellPhoneNumber" id="cellPhoneNumber" />
+        <input type="number" name="cellPhoneNumber" id="cellPhoneNumber" placeholder="80 (XX) XXX-XX-XX"/>
     </div>
 
     <div class="field">
         <label for="email">Email</label>
-        <input type="email" name="email" id="email" required />
+        <input type="email" name="email" id="email"/>
     </div>
 
     <div class="field">
@@ -155,6 +167,10 @@
         <input type="number" name="monthlyRevenue" id="monthlyRevenue" />
     </div>
 
+    <ul>
+        <li th:each="err : ${#fields.globalErrors()}"
+            th:text="${err}" class="error" />
+    </ul>
 
     <input type="submit" class="form_button" value="Создать" />
 </form>

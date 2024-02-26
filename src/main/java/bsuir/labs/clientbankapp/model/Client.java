@@ -8,7 +8,6 @@ import java.util.Date;
 
 @Entity
 public class Client {
-
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private int id;
@@ -34,12 +33,14 @@ public class Client {
     private String passportSeries;
     @NotEmpty(message = "Поле является обязательным")
     private String passportNumber;
+
     @NotEmpty(message = "Поле является обязательным")
     private String authority;
     @NotNull(message = "Поле является обязательным")
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date issueDate;
     @NotEmpty(message = "Поле является обязательным")
+    @Column(unique = true)
     private String identificationNumber;
     @NotEmpty(message = "Поле является обязательным")
     private String birthPlace;
@@ -73,7 +74,10 @@ public class Client {
     @NotNull(message = "Поле является обязательным")
     private boolean retiree;
 
-    private double monthlyRevenue;
+    private Double monthlyRevenue;
+
+//    @Transient
+//    private String strMonthlyRevenue;
 
 
     public int getId() {
@@ -252,11 +256,18 @@ public class Client {
         this.retiree = retiree;
     }
 
-    public double getMonthlyRevenue() {
+    public Double getMonthlyRevenue() {
         return monthlyRevenue;
     }
 
-    public void setMonthlyRevenue(double monthlyRevenue) {
-        this.monthlyRevenue = monthlyRevenue;
+
+
+    public String getFullName() {
+        return this.name + ' ' + this.surname + ' ' + this.patronymic;
     }
+
+    public String getPassport() {
+        return this.passportSeries + ' ' + this.passportNumber;
+    }
+
 }
